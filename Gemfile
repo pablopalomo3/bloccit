@@ -12,8 +12,9 @@ group :production do
    gem 'rails_12factor'
  end
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3-ruby', '~> 1.3', '>= 1.3.3'
+group :development, :test do
+  gem 'sqlite3'
+end
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
