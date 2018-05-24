@@ -23,14 +23,25 @@ posts = Post.all
     )
 end
 
-Post.find_or_create_by(
+puts "#{Post.count} post count before"
+
+Post.find_or_create_by!(
   title: "hello!",
   body: "This is a comment!"
 )
 
-Comment.find_or_create_by(
-  body: "unique comment!"
+puts "#{Post.count} post count after"
+
+puts "#{Comment.count} comment count before"
+
+p = Post.last
+
+Comment.find_or_create_by!(
+  body: "unique comment!",
+  post: p
 )
+
+puts "#{Comment.count} comment count after"
 
 puts "Seed finished"
 puts "#{Post.count} post created"
