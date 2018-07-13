@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   #used lambda to pass string to correct argument error
   password_digest_nil = -> { puts "password_digest.nil?" }
