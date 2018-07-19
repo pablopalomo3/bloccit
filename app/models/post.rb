@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   validates :body, length: { minimum: 20 }, presence: true
   validates :topic, presence: true
   validates :user, presence: true
+  after_create :favorite_post
   
   def up_votes
     votes.where(value: 1).count
@@ -29,4 +30,10 @@ class Post < ApplicationRecord
   end
   
   default_scope { order('rank DESC') }
+  
+  
+  def favorite_post
+      Favorite.create(post: self, user: self.user)
+      FavoriteMailer.new_post(self).deliver_now
+  end
 end
