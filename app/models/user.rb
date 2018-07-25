@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   
   #used lambda to pass string to correct argument error
-  password_digest_nil = -> { puts "password_digest.nil?" }
+  # password_digest_nil = -> { puts "password_digest.nil?" }
   
   before_save { self.email = email.downcase if email.present? }
   before_save { self.role ||= :member }
@@ -14,7 +14,8 @@ class User < ApplicationRecord
   
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
   
-  validates :password, presence: true, length: { minimum: 6 }, if: password_digest_nil
+  validates :password, presence: true, length: { minimum: 6 }
+  # , if: password_digest_nil
   validates :password, length: { minimum: 6 }, allow_blank: true
   
   validates :email,

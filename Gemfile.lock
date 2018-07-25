@@ -222,7 +222,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.2)
-  factory_bot
+  factory_bot (~> 4.8, >= 4.8.2)
   figaro (= 1.0)
   jbuilder (~> 2.5)
   jquery-rails
